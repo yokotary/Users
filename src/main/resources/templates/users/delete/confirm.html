@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" th:href="@{/webjars/bootstrap/4.5.3/css/bootstrap.min.css}">
+    <script th:href="@{webjars/jquery/3.5.1/js/jquery.min.js}"></script>
+    <script th:href="@{webjars/bootstrap/4.5.3/js/bootstrap.min.js}"></script>
+	<title>削除確認</title>
+
+</head>
+<body>
+	<div class="container mt-4">
+		<div class="row">
+			<div class="col-2">
+				<h1 class="h5">一覧</h1>
+			</div>
+		</div>
+		<table class="table table-striped">
+			<thead>
+				<tr><th>名前</th><th>性別</th><th>誕生日</th></tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td th:text="${user.name}"></td>
+					<td th:if="${user.gender}">男</td>
+					<td th:unless="${user.gender}">女</td>
+					<td th:text="${user.birth}"></td>
+	    			<td>
+	    				<form class="d-inline" th:action="@{/users/delete/{id}(id=${user.id})}" th:method="post">
+	    					<button class="btn btn-outline-dark btn-block" type="submit">削除</button>
+	    				</form>
+	    			</td>
+				</tr>
+			</tbody>
+		</table>
+	    			<a class ="btn btn-outline-dark" href="/users/">戻る</a>
+	</div>
+</body>
+</html>

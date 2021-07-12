@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" th:href="@{/webjars/bootstrap/4.5.3/css/bootstrap.min.css}">
+    	<script th:href="@{webjars/jquery/3.5.1/js/jquery.min.js}"></script>
+    	<script th:href="@{webjars/bootstrap/4.5.3/js/bootstrap.min.js}"></script>
+	<title>検索</title>
+
+</head>
+<body>
+	<div class="container mt-4">
+		<h1 class="h5">検索</h1>
+		<form th:action="@{/users/birthsearch/}" th:object="${searchBirthForm}" th:method="post">
+			<div class="form-group">
+				<label for="name">誕生日</label>
+				<input class="form-control" th:field="*{start}"/>
+				<p>～</p>
+				<input class="form-control" th:field="*{end}"/>
+				<button class="btn btn-outline-dark" type="submit">検索</button>
+				<a class="btn btn-outline-dark" href="/users/">トップへ戻る</a>
+            </div>
+		</form>
+	</div>
+</body>
+</html>

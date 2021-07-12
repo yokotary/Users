@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" th:href="@{/webjars/bootstrap/4.5.3/css/bootstrap.min.css}">
+    <script th:href="@{webjars/jquery/3.5.1/js/jquery.min.js}"></script>
+    <script th:href="@{webjars/bootstrap/4.5.3/js/bootstrap.min.js}"></script>
+	<title>更新確認</title>
+</head>
+<body>
+	<div class="container mt-4">
+		<table class="table table-striped" th:object="${userForm}">
+			<thead>
+				<tr><th>名前</th><th>性別</th><th>誕生日</th></tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td th:text="*{name}"></td>
+					<td th:if="*{gender}">男</td>
+					<td th:unless="*{gender}">女</td>
+					<td th:text="*{birth}"></td>
+				</tr>
+			</tbody>
+		</table>
+		<form class="d-inline" th:action="@{/users/update/}" th:object="${userForm}" th:method="post">
+			<input type="hidden" th:field="*{id}"/>
+			<input type="hidden" th:field="*{name}"/>
+			<input type="hidden" th:field="*{gender}"/>
+			<input type="hidden" th:field="*{birth}"/>
+			
+			<button class="btn btn-outline-dark" type="submit">更新</button>
+		</form>
+		
+		<form class="d-inline" th:action="@{/users/update/form/{id}(id=*{id})}" th:object="${userForm}" th:method="post">
+		    <input type="hidden" th:field="*{id}"/>
+			<input type="hidden" th:field="*{name}"/>
+			<input type="hidden" th:field="*{gender}"/>
+			<input type="hidden" th:field="*{birth}"/>
+			
+			<button class="btn btn-outline-dark" type="submit">戻る</button>
+		</form>
+		
+	</div>
+</body>
+</html>

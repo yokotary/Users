@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.5.3/css/bootstrap.min.css}">
+    <script th:href="@{webjars/jquery/3.5.1/js/jquery.min.js}"></script>
+    <script th:href="@{webjars/bootstrap/4.5.3/js/bootstrap.min.js}"></script>
+    <title>Error</title>
+</head>
+<body>
+    <!-- ポイント：各種エラー内容の表示 -->
+    <h1 th:text="${status} + ' ' + ${error}"></h1>
+    <p th:text="${message}"></p>
+    <p>トップ画面に戻ってください</p>
+    <a class="btn btn-outline-dark" href="/users/">トップ画面に戻る</a>
+</body>
+</html>
